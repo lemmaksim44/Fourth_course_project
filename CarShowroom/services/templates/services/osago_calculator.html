@@ -1,0 +1,246 @@
+{% extends 'main/sample.html' %}
+
+
+{% block head %} {% include 'main/header.html' %} {% endblock %}
+
+
+{% block content %}
+
+<div id="form_question" class="contact_form_box">
+        
+    <div onclick="view_site()" class="contact_form_box_fill"></div>
+
+    <div class="contact_form_osago">
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="contact_form_title">Запись на страхование</div>
+            <div class="contact_form_text">Менеджеры компании с радостью ответят на ваши вопросы и произведут расчет стоимости услуг и подготовят индивидуальное коммерческое предложение.<br><br>Поля обязательные к заполнению (*)</div>
+
+            <span style="color: red; font-size: 0.8vw; margin-left: 30%; margin-right: 30%;">{{ error }}</span>
+
+            <div class="contact_form_field">
+
+                {{ form.name_service }}
+
+                <select id="selected_insurance" class="service_form_select" required>
+                    <option value="ОСАГО">ОСАГО</option>
+                    <option value="КАСКО">КАСКО</option>
+                    <option value="ОСАГО и КАСКО">ОСАГО и КАСКО</option>
+                </select>&nbsp;*<br>
+                
+                {{ form.client_name }}&nbsp;*<br>
+                {{ form_client.client_name }}
+                
+                {{ form.client_phone }}&nbsp;*<br>
+                {{ form_client.client_phone }}
+                
+                <div class="comment_hide">{{ form.comment }}</div>
+
+                {{ form.status }}
+
+                <div class="form_personal_information">Нажимая кнопку отправить я соглашаюсь на <a href="/company/processing_of_personal_data" style="color: #8AB5FC">обработку своих персональных данных</a></div>
+                <div class="form_button_setting"><button onclick="send()" type="submit" class="form_button">Отправить</button></div>
+            
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+<div id="kbm_question" class="contact_form_box">
+        
+    <div onclick="view_site()" class="contact_form_box_fill"></div>
+
+    <div class="contact_form_kbm">
+
+        <div class="kbm_flex">
+            <div>
+                <div class="contact_form_title">Коэффициент бонус-малус</div>
+                <div class="contact_form_text_kbm">Аббревиатура КБМ — сокращенное обозначение коэффициента бонус-малус, влияющего на стоимость полиса (повышающий или понижающий в зависимости от аварийности в предыдущие периоды). <br><br>Водителям, впервые получающим полис ОСАГО, присваивается класс 3 и КБМ 1,17. В дальнейшем показатель рассчитывается по таблице КБМ от РСА. <br><br>Если в период КБМ вы угодили в одну аварию, выбираете соответствующую ячейку в шапке таблицы и смотрите, какой класс оказывается на пересечении. <br><br>Если количество ДТП, совершенных вами в период КБМ, превысило 3 случая, вам присваивается класс М. Классу М соответствует коэффициент 3,92.</div>
+            </div>
+            
+            <div class="kbm_picture"><img class="kbm_picture_settings" src="../../static/services/img/KBM.png"></div>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <div class="text">
+        <div class="content_box">
+            <div class="text_title">Страхование</div>
+            <div class="models_line"></div>
+            
+            <div class="osago_title_box">
+
+                <div class="osago_picture">
+                    <img class="osago_picture_settings" src="../../static/services/img/osago.jpg">
+                </div>
+
+                <div class="osago_application_box">
+
+                    <div class="osago_application_text">
+                        Заключение договора автострахования за несколько минут.
+                    </div>
+
+                    <div onclick="view_form_question()" class="contact_button">Оформить страховку</div>
+
+                    <div onclick="calculator_scroll()" class="calculator_link">Расчитать ОСАГО</div>
+
+                </div>
+
+            </div>
+
+            <div class="osago_text">
+                ОСАГО (обязательное страхование гражданской ответственности) - это вид страхования, который обязателен для каждого владельца автомобиля в России. Он предназначен для компенсации ущерба, который вы можете причинить другим участникам дорожного движения при ДТП.
+
+                <br><br>КАСКО (касковое страхование) - это дополнительный вид страхования, который покрывает ущерб, причиненный вашему автомобилю в результате аварии, угона, пожара, стихийного бедствия и других непредвиденных ситуаций.
+
+                <br><br>Если вы хотите застраховать свой автомобиль, то мы можем предложить вам полный пакет страхования ОСАГО и КАСКО. Наша страховка предоставляет защиту вашему автомобилю в случае ДТП, кражи, пожара и других непредвиденных ситуаций. Мы гарантируем полное покрытие по разумной цене и высокое качество обслуживания.
+                
+                <br><br>Мы сотрудничаем только с надежными страховыми компаниями, успешно зарекомендовавшими себя в области страхования:
+
+                <br><br>- ООО СК «Согласие»;
+                <br>- ООО «Росгосстрах»;
+                <br>- ООО СК «Гелиос Резерв»;
+                <br>- СОАО «ВСК»;
+                <br>- ЗАО «МАКС»;
+                <br>- ОАО «Ингострах»;
+                <br>- АО «Согаз».
+
+                <br><br>Если хотите узнать примерную стоимость полиса ОСАГО, то мы можем предложить вам воспользоваться нашим простым калькулятором.
+
+            </div>
+
+            <div class="osago_calculator_picture">
+                <img class="osago_calculator_picture_settings" src="../../static/services/img/calculator.png">
+            </div>
+
+            <div class="calculator_box">
+                
+                <div class="calculator_keys_box">
+
+                    <div class="calculator_inline_box">
+                        
+                        <select id="selected_region" onchange="double_select()" class="calculator_select">
+                
+                            {% for line in region %}
+                                <option value="{{ line.id_region }}">{{ line.name }}</option>
+                            {% endfor %}
+
+                        </select>
+
+                        {% for line in region %}
+                            <select id="{{ line.id_region }}" class="calculator_select_hide">
+                                <option value="">Выберите город</option>
+
+                                {% for line_in in city %}
+                                    {% if line.id_region == line_in.id_region.id_region %}
+                                        <option value="{{ line_in.coefficient }}">{{ line_in.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+
+                            </select>
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="calculator_inline_box">
+
+                        <input id="age" type="number" class="calculator_input" placeholder="Возраст">
+
+                        <select id="restrictions" class="calculator_select">
+                            <option value="">Выберите тип страховки</option>
+                            <option value="1">Один или несколько водителей</option>
+                            <option value="2.32">Неограниченное число водителей</option>
+                        </select>
+                        
+                    </div>
+
+                    <div class="calculator_inline_box">
+
+                        <input id="experience" type="number" class="calculator_input" placeholder="Стаж">
+                        
+                        <select id="term" class="calculator_select">
+                            <option value="">Выберите срок страхования</option>
+                            <option value="0.5">Три месяца</option>
+                            <option value="0.6">Четыре месяца</option>
+                            <option value="0.65">Пять месяцев</option>
+                            <option value="0.7">Шесть месяцев</option>
+                            <option value="0.8">Семь месяцев</option>
+                            <option value="0.9">Восемь месяцев</option>
+                            <option value="0.95">Девять месяцев</option>
+                            <option value="1">Десять месяцев и более</option>
+                        </select>
+
+                    </div>
+
+                    <div class="calculator_inline_box">
+                            
+                        <input id="power" type="number" class="calculator_input" placeholder="Введите мощность авто">
+
+                        <div class="kbm_flex_select">
+
+                            <select id="KBM" class="calculator_select_kbm">
+                                <option value="">Выберите КБМ</option>
+                                <option value="3.92">3.92</option>
+                                <option value="2.94">2.94</option>
+                                <option value="2.25">2.25</option>
+                                <option value="1.76">1.76</option>
+                                <option value="1.17">1.17</option>
+                                <option value="1">1</option>
+                                <option value="0.91">0.91</option>
+                                <option value="0.83">0.83</option>
+                                <option value="0.78">0.78</option>
+                                <option value="0.74">0.74</option>
+                                <option value="0.68">0.68</option>
+                                <option value="0.63">0.63</option>
+                                <option value="0.57">0.57</option>
+                                <option value="0.52">0.52</option>
+                                <option value="0.46">0.46</option>
+                            </select>&nbsp;&nbsp;&nbsp;
+
+                            <div onclick="view_kbm_question()" class="question_picture"><img class="question_picture_settings" src="../../static/services/img/question.png"></div>
+                            
+                        </div>
+
+                    </div> 
+
+                </div>
+
+                <div class="calculator_value_box">
+                    <div class="calculator_value">
+
+                        <div class="calculator_flex">
+                            <div class="calculator_value_minibox">
+                                <div class="calculator_value_settings">Минимальная цена:</div>
+                                <div class="calculator_value_settings">Максимальная цена:</div>
+                            </div>
+
+                            <div class="calculator_value_minibox">
+                                <div id="min_answer" class="calculator_value_settings2"></div>
+                                <div id="error" class="calculator_value_error"></div>
+                                <div id="max_answer" class="calculator_value_settings2"></div>
+                            </div>
+                        </div>
+
+                        <div class="calculator_button_box">
+                            <div onclick="calculator()" class="calculator_button">Расчитать ОСАГО</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../../static/services/js/osago.js"></script>
+
+{% endblock %}

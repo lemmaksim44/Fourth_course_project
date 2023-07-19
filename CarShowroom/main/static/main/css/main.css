@@ -1,0 +1,454 @@
+/*
+    Body
+*/
+
+
+body {
+    background-color: #000000;
+    background: url('../img/background/fon.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+
+a, a:visited, a:hover {
+    text-decoration: none;
+    user-select: none;
+    color: #000000
+}
+
+
+header {
+    z-index: 5;
+    position: fixed;
+    width: 100%;
+}
+
+content {
+    z-index: 3;
+}
+
+footer {
+    z-index: 4;
+}
+
+
+/*
+    Header
+*/
+
+
+.header_block {
+    width: 100%;
+    height: 10vh;
+    background: rgb(196, 198, 202);
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+}
+
+
+.header_logo {
+    height: 10vh;
+    display: flex;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
+    align-items: center;
+}
+
+
+.logo {
+    width: 100%;
+    height: 4vh;
+}
+
+
+.brand_header_logo {
+    width: 15vh;
+    height: 8vh;
+}
+
+
+/*
+    Header for PC
+*/
+
+
+.header_menu {
+    display: inline-block;
+    flex-grow: 1;
+    height: 10vh;
+    margin-right: 4vw;
+}
+
+
+.header_info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 4.9vh;
+    grid-gap: 1.5vw;
+    font-size: 2.4vh;
+    color:#000000;
+}
+
+
+.header_info_models{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.9vh;
+    color:#000000;
+}
+
+
+.header_info_left{
+    display: flex;
+    justify-content: flex-start;
+    font-size: 2.2vh;
+}
+
+.header_info_right{
+    display: flex;
+    justify-content: flex-end;
+    grid-gap: 1.5vw;
+    font-size: 2.4vh;
+}
+
+
+.icon {
+    width: 1.6vw;
+    height: 3vh;
+}
+
+
+.line {
+    display: flex;
+    height: 0.1vh;
+    background: #000000;
+}
+
+
+.menu_link {
+    display: flex;
+    justify-content: flex-end;
+    height: 4.9vh;
+    font-size: 2.8vh;
+    list-style: none;
+    grid-gap: 1.5vw;
+    align-items: center;
+}
+
+
+.menu_link a {
+    display: inline-block;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.menu_link a:after {
+    display: block;
+    content: "";
+    background-color: #000000;
+    height: 1px;
+    width: 0%;
+    left: 50%;
+    position: absolute;
+    -webkit-transition: width .3s ease-in-out;
+    -moz--transition: width .3s ease-in-out;
+    transition: width .3s ease-in-out;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+
+.menu_link a:hover:after, a:focus:after{
+    width: 100%;
+}
+
+
+.menu_line {
+    display: flex;
+    width: 2vw;
+    margin-top: 1vh;;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1vh;
+    height: 0.1vh;
+    background: #000000;
+}
+
+
+.menu_link ul {
+    display: none;
+    position: absolute;
+    text-align: center;
+    background: rgb(214, 216, 220, 0.95);
+    top: 9.5vh;
+    border-top: 5px solid rgb(196, 198, 202);
+    padding: 5px 0px 10px 0px;
+    list-style: none;
+}
+
+
+#nav1 {
+    width: 12vw;
+    right: 55vh;
+}
+
+
+#nav2 {
+    width: 15vw;
+    right: 33.2vh;
+}
+
+
+#nav3 {
+    width: 48vw;
+    right: 0;
+}
+
+
+.nav3_menu {
+    display: flex;
+    justify-content: center;
+}
+
+
+.nav3_menu_item {
+    width: 16vw;
+    margin: 1vh;
+}
+
+
+#nav4 {
+    width: 15vw;
+    right: 0;
+}
+
+
+.menu_link li:hover ul {
+    display: block;
+}
+
+
+.menu_title a:hover:after, a:focus:after {
+    width: 0%;
+}
+
+
+.submenu_link {
+    font-size: 2vh;
+}
+
+
+/*
+    Header for mobile
+*/
+
+
+#mobile_menu {
+    display: none;
+}
+
+
+/*
+    Main Content Box
+*/
+
+
+.content_box {
+    display: block;
+    margin-left: 8vw;
+    margin-right: 8vw;
+    color: #FFFFFF;
+}
+
+
+/*
+    Footer
+*/
+
+
+.footer_block {
+    width: 100%;
+    height: 10vh;
+    margin-top: 3vw;
+    background: rgb(196, 198, 202);
+    align-items: center;
+}
+
+
+.footer_block_for_text {
+    padding-top: 2vh;
+    margin-left: 8vw;
+    margin-right: 8vw;
+    text-align: center;
+}
+
+
+.footer_text {
+    font-size: 0.8vw;
+    align-items: center;
+}
+
+
+/*
+    Main page
+*/
+
+
+.main_picture {
+    padding-top: 10vh;
+}
+
+
+.main_picture_setting {
+    width: 100%;
+    height: 50vw;
+}
+
+
+.main_partners_box {
+    margin-top: 4vw;
+}
+
+
+.main_partners_picture {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2vw;
+}
+
+
+.main_partners_picture_setting {
+    width: 11vw;
+    height: 6vw;
+}
+
+
+.main_partners_text {
+    font-size: 1.2vw;
+    margin-top: 2vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
+
+
+.main_auto_in_stock {
+    margin-top: 4vw;
+}
+
+
+.main_operating_tips {
+    margin-top: 4vw;
+}
+
+
+.main_auto_in_stock_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 30vw;
+    margin-top: 2vw;
+    padding-left: 3vw;
+    padding-right: 3vw;
+}
+
+
+.main_auto_in_stock_box_setting {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1.2vw;
+    width: 60%;
+    height: 30vw;
+}
+
+
+.main_auto_in_stock_box_picture {
+    width: 40%;
+    height: 30vw;
+}
+
+
+.main_auto_in_stock_box_picture_setting {
+    float: right;
+    width: 28vw;
+    height: 29.8vw;
+    border-radius: 2vw;
+}
+
+
+.main_operating_tips_box {
+    display: flex;
+    flex-wrap: nowrap;
+    grid-gap: 1.2vw;
+    width: 100%;
+    height: 18vw;
+    padding-top: 2vw;
+
+}
+
+
+/*
+    Pass error
+*/
+
+
+.pass_error_logo {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 10vh;
+}
+
+
+.pass_error_logo_settings {
+    margin-top: 30vh;
+    width: 40vw;
+    height: 10vh;
+}
+
+
+.pass_error_box {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 90vh;
+}
+
+.pass_error_text {
+    width: 70vw;
+    height: 10vw;
+    margin-top: 40vh;
+    color: #FFFFFF;
+    font-size: 2.5vw;
+    text-align: center;
+}
+
+
+.access_is_denied_text {
+    width: 70vw;
+    height: 10vw;
+    margin-top: 40vh;
+    color: #FFFFFF;
+    font-size: 4vw;
+    text-align: center;
+}

@@ -1,0 +1,74 @@
+{% extends 'main/sample.html' %}
+
+
+{% block head %} {% include 'main/header.html' %} {% endblock %}
+
+
+{% block content %}
+
+<div id="form_question" class="contact_form_box">
+        
+    <div onclick="view_site()" class="contact_form_box_fill"></div>
+
+    <div class="contact_form">
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="contact_form_title">Запись на сервис</div>
+            <div class="contact_form_text">Менеджеры компании с радостью ответят на ваши вопросы и произведут расчет стоимости услуг и подготовят индивидуальное коммерческое предложение.<br><br>Поля обязательные к заполнению (*)</div>
+
+            <span style="color: red; font-size: 0.8vw; margin-left: 30%; margin-right: 30%;">{{ error }}</span>
+
+            <div class="contact_form_field">
+
+                {{ form.name_service }}
+                
+                {{ form.client_name }}&nbsp;*<br>
+                {{ form_client.client_name }}
+                
+                {{ form.client_phone }}&nbsp;*<br>
+                {{ form_client.client_phone }}
+                
+                {{ form.client_email }}<br>
+                {{ form_client.client_email }}
+                
+                {{ form.comment }}<br>
+
+                {{ form.status }}
+
+                <div class="form_personal_information">Нажимая кнопку отправить я соглашаюсь на <a href="/company/processing_of_personal_data" style="color: #8AB5FC">обработку своих персональных данных</a></div>
+                <div class="form_button_setting"><button onclick="send()" type="submit" class="form_button">Отправить</button></div>
+            
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+    <div class="service_content">
+
+        <div class="service_picture">
+            <img class="service_picture_setting" src="../../static/services/img/service_photo.jpg">
+        </div>
+
+        <div class="service_form_box">
+
+            <div class="text_title">Сервис</div>
+            <div class="models_line"></div>
+
+            <div class="service_form_text">
+                Мы предлагаем полный спектр услуг по обслуживанию и ремонту автомобилей, используя только оригинальные запчасти и материалы. Также предоставляем удобные услуги онлайн-записи, забора и доставки автомобиля. Мы ценим ваше время и предлагаем программу лояльности со скидками на услуги автосервиса.
+                <br><br>В нашей компании работает большое количество высококвалифицированных механиков с использованием современное оборудования для производства любых видов работ - от регулярного обслуживания до сложных ремонтных работ. Мы готовы ответить на любые вопросы и помочь поддерживать ваш автомобиль в отличном состоянии.
+            </div>
+ 
+            <div onclick="view_form_question()" class="contact_button">Записаться на сервис</div>
+            
+        </div>
+
+        <script src="../../static/services/js/service_registaration.js"></script>
+
+    </div>
+
+{% endblock %}

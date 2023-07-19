@@ -1,0 +1,52 @@
+{% extends 'main/sample.html' %}
+
+
+{% block head %} {% include 'main/header.html' %} {% endblock %}
+
+
+{% block content %}
+
+    <div class="text">
+        <div class="content_box">
+            <div class="content_box_tips">
+            
+                <div class="tip_text_box">
+                    <div class="tip_title">{{ tip.title }}</div>
+                    <div class="tip_text">{{ tip.text|linebreaks }}</div>
+                </div>
+
+                <div class="another_articles_block">
+                    
+                    <div id="arrow_button_up" class="another_articles_block_arrow_up"></div>
+                    
+                    <div id="container" class="another_articles">
+                        {% for line in tips %}
+
+                            <a href="/services/operating_tips/{{ line.id_operating_tips }}">
+                                <div class="card_tips_mini">
+
+                                    <div class="card_tips_picture_mini">
+                                        <img class="card_tips_picture_settings_mini" src="{{ line.picture.url }}">
+                                    </div>
+                            
+                                    <div class="card_tips_title_mini">
+                                        <div class="card_tips_title_settings_mini">{{ line.title }}</div>
+                                    </div>
+
+                                </div>
+                            </a>
+
+                        {% endfor %}
+                    </div>
+
+                    <div id="arrow_button_down" class="another_articles_block_arrow_down"></div>
+
+                </div>
+            
+            </div>
+        </div>
+    </div>
+
+    <script src="../../static/services/js/article.js"></script>
+
+{% endblock %}

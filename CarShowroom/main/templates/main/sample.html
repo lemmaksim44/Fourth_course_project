@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'models/css/models.css' %}">
+    <link rel="stylesheet" href="{% static 'services/css/services.css' %}">
+    <link rel="stylesheet" href="{% static 'company/css/company.css' %}">
+    <link rel="stylesheet" href="{% static 'stock/css/stock.css' %}">
+    <title>Атик-Моторс</title>
+
+</head>
+
+<body>
+
+    <header>
+
+        <div id="mobile_menu" class="header_block">
+
+            <div class="header_logo">    
+                <a href="/">
+                    <img class="logo" src="/static/main/img/header/Атик-Моторс.jpg">
+                </a>
+            </div>
+
+            <div class="block_menu">
+                <div class="line_block_menu"></div>
+                <div class="line_block_menu"></div>
+                <div class="line_block_menu"></div>
+            </div>
+
+        </div>
+
+        {% block head %}
+        {% endblock %}
+
+    </header>
+
+    <content>
+
+        {% block content %}
+        {% endblock %}
+
+    </content>
+
+    <footer>
+        <div class="footer_block">
+            <div class="footer_block_for_text">
+                <div class="footer_text">© 2023 ООО Атик-Моторс Информация на сайте не является публичной офертой. Все цены указанные на данном сайте носят информационный характер. Для получения подробной информации просьба обращаться в дилерские центры холдинга «Атик-Моторс». Опубликованная на данном сайте информация может быть изменена в любое время без предварительного уведомления.</div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

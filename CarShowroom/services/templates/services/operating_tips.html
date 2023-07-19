@@ -1,0 +1,45 @@
+{% extends 'main/sample.html' %}
+
+
+{% block head %} {% include 'main/header.html' %} {% endblock %}
+
+
+{% block content %}
+
+    <div class="text">
+        <div class="content_box">
+            
+            <div class="text_title">Советы по эксплуатации</div>
+            <div class="models_line"></div>
+
+            <div class="card_place">
+                
+                {% if tips %}
+                    {% for line in tips %}
+
+                        <a href="/services/operating_tips/{{ line.id_operating_tips }}">
+                            <div class="card_tips">
+
+                                <div class="card_tips_picture">
+                                    <img class="card_tips_picture_settings" src="{{ line.picture.url }}">
+                                </div>
+                            
+                                <div class="card_tips_title">
+                                    <div class="card_tips_title_settings">{{ line.title }}</div>
+                                </div>
+
+                            </div>
+                        </a>
+
+                    {% endfor %}
+
+                {% else %}
+                    <div class="tips_error">На данный момент советов нет, приходите позже</div>
+                {% endif %}
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

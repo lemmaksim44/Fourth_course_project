@@ -1,0 +1,74 @@
+{% extends 'main/sample.html' %}
+
+
+{% block head %} {% include 'models/models header.html' %} {% endblock %}
+
+
+{% block content %}
+
+    {% load humanize %}
+
+    <div class="main_picture_models">
+        <img class="main_picture_models_setting" src="{{ selected_brand.main_picture.url }}">
+    </div>
+
+    <div class="button_block">
+        <div class="button_block_info">Больше информации о бренде, последних моделях и планах компании можно узнать на сайте партнера.
+            Также на этом сайте можно ознакомиться с историей бренда, его миссией и ценностями, а также прочитать отзывы других пользователей о продукции компании.
+        </div>
+        <div class="button_block_in">
+            <a href="{{ selected_brand.link }}"><div class="button_block_link">Сайт партнера</div></a>
+        </div>
+    </div>
+
+    <div class="content_box">
+        
+        {% for line in car_class %}
+
+            {% if line.id_brand_id == selected_brand.id_brand %}
+
+                <div class="class_auto">
+                    <div class="title_class_auto">{{ line.id_class.name }}</div>
+                    <div class="models_line"></div>
+
+                    <div class="card_place">
+
+                        {% for linein in model %}
+
+                            {% if linein.id_class.name == line.id_class.name %}
+                                <a href="/models/{{ selected_brand.name }}/{{ linein.name }}">
+                                    <div class="auto_card">
+                                        <div class="card_picture">
+                                            <img class="card_picture_setting" src="{{ linein.card_pictures.url }}">
+                                        </div>
+                                        <div class="card_info">
+                                            <div class="card_info_name_model">{{ linein.name }}</div>
+                                            <div class="card_info_price">
+
+                                                {% for lineinagain in car_equipment %}
+
+                                                    {% if lineinagain.id_model_id == linein.id_model %}
+                                                        От {{ lineinagain.price|intcomma }} ₽
+                                                    {% endif %}
+
+                                                {% endfor %}         
+                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+            
+            {% endif %}
+
+        {% endfor %}
+            
+    </div>
+
+{% endblock %}

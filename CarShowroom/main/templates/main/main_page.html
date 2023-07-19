@@ -1,0 +1,100 @@
+{% extends 'main/sample.html' %}
+
+
+{% block head %} {% include 'main/header.html' %} {% endblock %}
+
+
+{% block content %}
+
+    {% load humanize %}
+
+    <div class="main_picture">
+        <img class="main_picture_setting" src="../../static/main/img/main menu/Renault.jpg">
+    </div>
+
+    <div class="content_box">
+
+        <div class="main_partners_box">
+            <div class="description_car_title">Официальные партнеры</div>
+            <div class="models_line"></div>
+
+            <div class="main_partners_picture">
+
+                {% for line in brand %}
+                    <a href="/models/{{ line.name }}"><img class="main_partners_picture_setting" src="{{ line.logo.url }}"></a>
+                {% endfor %}
+            
+
+                <div class="main_partners_text">
+                    Мы работаем персонально с каждым клиентом на всех этапах приобретения и обслуживания автомобиля в сервисных центрах. Квалифицированные специалисты компании прошли обучение на специальных курсах от производителя и авторизованы для проведения всех видов работ и обслуживания.
+                </div>
+
+            </div>
+
+            <div class="main_auto_in_stock">
+
+                <div class="car_modification_title"><a href="/stock/new" style="color: white;">Авто в наличии</a></div>
+                <div class="models_line"></div>
+
+                <div class="main_auto_in_stock_box">
+                    <div class="main_auto_in_stock_box_setting">
+                        {% for line in car_in_stock %}
+
+                            <a class="card_car_in_stock_link" href="/stock/used/{{ line.id_car_in_stock }}">
+
+                                <div class="card_car_in_stock">
+                                
+                                    <div class="card_car_in_stock_picture">
+                                        <img class="card_car_in_stock_picture_setting" src="{{ line.card_picture.url }}">
+                                    </div>
+
+                                    <div class="car_in_stock_text_box">
+
+                                        <div class="car_in_stock_title">{{ line.brand }} {{ line.name }} {{ line.year }}г.</div>
+                                        <div class="car_in_stock_price">{{ line.price|intcomma }} ₽</div>
+
+                                    </div>
+
+                                </div>
+                            </a>
+
+                        {% endfor %}
+                    </div>
+
+                    <div class="main_auto_in_stock_box_picture"><img class="main_auto_in_stock_box_picture_setting" src="../../static/main/img/main menu/girl rotation.jpg"></div>
+
+                </div>
+
+            </div>
+
+            <div class="main_operating_tips">
+
+                <div class="description_car_equipment_title"><a href="/services/operating_tips" style="color: white;">Советы по эксплуатации</a></div>
+                <div class="models_line"></div>
+
+                <div class="main_operating_tips_box">
+                    {% for line in operating_tips %}
+
+                        <a href="/services/operating_tips/{{ line.id_operating_tips }}">
+                            <div class="card_tips">
+
+                                <div class="card_tips_picture">
+                                    <img class="card_tips_picture_settings" src="{{ line.picture.url }}">
+                                </div>
+                            
+                                <div class="card_tips_title">
+                                    <div class="card_tips_title_settings">{{ line.title }}</div>
+                                </div>
+
+                            </div>
+                        </a>
+
+                    {% endfor %}
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

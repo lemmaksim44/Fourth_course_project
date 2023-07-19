@@ -1,0 +1,88 @@
+{% extends 'main/sample.html' %}
+
+
+{% block head %} {% include 'main/header.html' %} {% endblock %}
+
+
+{% block content %}
+
+    {% load humanize %}
+
+    <div class="text">
+        <div class="content_box">
+
+            <div class="text_title">Новые авто</div>
+            <div class="models_line"></div>
+
+            <div class="stock_box">
+
+                <div class="filter_box">
+                    <div class="filter">
+
+                        <div class="filter_title">Параметры поиска</div>
+                        <div class="models_line"></div>
+
+                        
+                        <div class="filter_body_type">
+                            <div class="filter_body_type_title">Бренд</div>
+                            <a href="/stock/new"><div class="filter_body_type_links">Все</div></a>
+                            {% for line in car_brand %}
+                                <a href="/stock/new/filter/brand/{{ line.brand }}"><div class="filter_body_type_links">{{ line.brand }}</div></a>
+                            {% endfor %}
+                        </div>
+      
+                        <div class="models_line"></div>
+
+
+                        <div class="filter_body_type">
+                            <div class="filter_body_type_title">Тип кузова</div>
+                            <a href="/stock/new"><div class="filter_body_type_links">Все</div></a>
+                            {% for line in body_type %}
+                                <a href="/stock/new/filter/body/{{ line.id_body_type.id_body_type }}"><div class="filter_body_type_links">{{ line.id_body_type}}</div></a>
+                            {% endfor %}
+                        </div>
+
+                        <div class="models_line_none"></div>
+
+                    </div>
+                </div>
+
+                <div class="car_in_stock_box">
+                    <div class="car_in_stock_unbox">
+
+                        {% if car_in_stock %}
+
+                            {% for line in car_in_stock %}
+
+                                <a class="card_car_in_stock_link" href="/stock/used/{{ line.id_car_in_stock }}">
+
+                                    <div class="card_car_in_stock">
+                                
+                                        <div class="card_car_in_stock_picture">
+                                            <img class="card_car_in_stock_picture_setting" src="{{ line.card_picture.url }}">
+                                        </div>
+
+                                        <div class="car_in_stock_text_box">
+
+                                            <div class="car_in_stock_title">{{ line.brand }} {{ line.name }} {{ line.year }}г.</div>
+                                            <div class="car_in_stock_price">{{ line.price|intcomma }} ₽</div>
+
+                                        </div>
+
+                                    </div>
+                                </a>
+
+                            {% endfor %}
+                    
+                        {% else %}
+                            <div class="car_in_stock_error">На данный момент не все авто внесены на сайт, приходите позже</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

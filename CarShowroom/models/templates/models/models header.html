@@ -1,0 +1,94 @@
+<div class="header_block">
+
+    <div class="header_logo">    
+        <a href="/models/{{ selected_brand.name }}">
+            <img class="brand_header_logo" src="{{ selected_brand.logo.url }}">
+        </a>
+    </div>
+
+    <div class="header_menu">
+
+        <div class="header_info_models">
+            
+            <div class="header_info_left">
+                <a href="/">Атик-Моторс</a>
+            </div>
+
+            <div class="header_info_right">
+                <a><img class="icon" src="../../static/main/img/header/Гео метка.png">&nbsp;{{ selected_brand.address }}</a>
+                <a><img class="icon" src="../../static/main/img/header/Телефон.png">&nbsp;{{ selected_brand.phone }}</a>
+            </div>
+            
+        </div>
+
+        <div class="line"></div>
+    
+        <div class="header_navigation">
+            <ul class="menu_link">
+
+                <li><a>Модели</a>
+                    <ul class="menu_link_button_info" id="nav1">
+                        <div class="menu_title"><a>Марка</a></div>
+                        <div class="menu_line"></div>
+
+                        {% for line in brand %}
+                            <li><a class="submenu_link" href="/models/{{line.name}}">{{ line.name }}</a></li>
+                        {% endfor %}
+                        
+                    </ul>
+                </li>
+
+                <li><a>Авто в наличии</a>
+                    <ul class="menu_link_button_info" id="nav2">
+                        <div class="menu_title"><a>Автомобили</a></div>
+                        <div class="menu_line"></div>
+                        <li><a class="submenu_link" href="/stock/used">С пробегом</a></li>
+                        <li><a class="submenu_link" href="/stock/new">Новые</a></li>
+                    </ul>
+                </li>
+
+                <li><a>Сервисы</a>
+                    <ul class="menu_link_button_info" id="nav3">
+
+                        <div class="nav3_menu">
+
+                            <div class="nav3_menu_item">
+                                <div class="menu_title"><a>Онлайн-сервисы</a></div>
+                                <div class="menu_line"></div>
+                                <li><a class="submenu_link" href="/services/osago_calculator">Страхование</a></li>
+                            </div>
+
+                            <div class="nav3_menu_item">
+                                <div class="menu_title"><a>Сервис</a></div>
+                                <div class="menu_line"></div>
+                                <li><a class="submenu_link" href="/services/service_registration">Запись на сервис</a></li>
+                                <li><a class="submenu_link" href="/services/test-drive">Тест-драйв</a></li>
+                            </div>
+
+                            <div class="nav3_menu_item">
+                                <div class="menu_title"><a>Владельцам</a></div>
+                                <div class="menu_line"></div>
+                                <li><a class="submenu_link" href="/services/operating_tips">Советы по эксплуатации</a></li>
+                                <li><a class="submenu_link" href="/services/guarantee">Гарантия</a></li>
+                            </div>
+
+                        </div>
+
+                    </ul>
+                </li>
+
+                <li><a>Компания</a>
+                    <ul class="menu_link_button_info" id="nav4">
+                        <div class="menu_title"><a>Информация</a></div>
+                        <div class="menu_line"></div>
+                        <li><a class="submenu_link" href="/company/about_company">О компании</a></li>
+                        <li><a class="submenu_link" href="/company/contacts">Контакты</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+</div>
+

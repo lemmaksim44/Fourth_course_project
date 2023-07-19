@@ -1,0 +1,99 @@
+{% extends 'main/sample.html' %}
+
+
+{% block head %} {% include 'main/header.html' %} {% endblock %}
+
+
+{% block content %}
+
+    <div id="form_question" class="contact_form_box">
+        
+        <div onclick="view_site()" class="contact_form_box_fill"></div>
+
+        <div class="contact_form_test_drive">
+            <form method="post">
+
+                {% csrf_token %}
+
+                <div class="contact_form_title">Тест-драйв</div>
+                <div class="contact_form_text">Менеджеры компании с радостью ответят на ваши вопросы и произведут расчет стоимости услуг и подготовят индивидуальное коммерческое предложение.<br><br>Поля обязательные к заполнению (*)</div>
+
+                <span style="color: red; font-size: 0.8vw; margin-left: 30%; margin-right: 30%;">{{ error }}</span>
+
+                <div class="contact_form_field">
+
+                    {{ form.name_service }}
+
+                    <select id="selected_brand" onchange="double_select()" class="service_form_select" required>
+
+                        <option value="clean_select">Выберите бренд</option>
+                        
+                        {% for line in brand %}
+                            <option value="{{ line.name }}">{{ line.name }}</option>
+                        {% endfor %}
+
+                    </select>&nbsp;*
+
+                    <select id="first_select" class="service_form_select_hide">
+                        <option value="">Выберите модель</option>
+                    </select><div id="first_select$" class="service_form_select_hide_dop">&nbsp;*</div>
+
+                    {% for line in brand %}
+                    
+                        <select id="{{ line.name }}" class="service_form_select_hide">
+                        
+                            <option value="">Выберите модель</option>
+                        
+                            {% for line_in in model %}
+                                {% if line_in.id_brand.id_brand == line.id_brand %}
+                                    <option value="{{ line_in.name }}">{{ line_in.name }}</option>
+                                {% endif %}
+                            {% endfor %}
+
+                        </select><div id="{{ line.name }}$" class="service_form_select_hide_dop">&nbsp;*</div>
+                    
+                    {% endfor %}
+
+                    {{ form.client_name }}&nbsp;*<br>
+                    {{ form_client.client_name }}
+                
+                    {{ form.client_phone }}&nbsp;*<br>
+                    {{ form_client.client_phone }}
+
+                    <div class="comment_hide">{{ form.comment }}</div>
+
+                    {{ form.status }}
+
+                    <div class="form_personal_information">Нажимая кнопку отправить я соглашаюсь на <a href="/company/processing_of_personal_data" style="color: #8AB5FC">обработку своих персональных данных</a></div>
+                    <div class="form_button_setting"><button onclick="send()" type="submit" class="form_button">Отправить</button></div>
+            
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    <div class="service_content">
+
+        <div class="service_picture">
+            <img class="service_picture_setting" src="../../static/services/img/test_drive_photo.jpg">
+        </div>
+
+        <div class="service_form_box">
+
+            <div class="text_title">Тест-драйв</div>
+            <div class="models_line"></div>
+
+            <div class="service_form_text">Мы хотели бы предложить вам пройти тест-драйв наших автомобилей. Это поможет вам получить полное представление о возможностях и комфорте наших авто. Во время тест-драйва вы сможете оценить качество материалов отделки и узнать больше о функциональных возможностях автомобиля. Если у вас есть особые требования, мы можем предложить разные варианты автомобилей для тест-драйва.
+            <br><br>Опытный сотрудник поможет вам c выбором автомобиля и даст рекомендации по управлению. В конце тест-драйва вы сможете задать любые вопросы, которые у вас могут возникнуть. Мы уверены, что тест-драйв поможет вам сделать правильный выбор и мы будем рады, если вы выберете наш автомобиль.</div>
+ 
+            <div onclick="view_form_question()" class="contact_button">Выбрать авто</div>
+            
+        </div>
+
+    </div>
+
+    <script src="../../static/services/js/test_drive.js"></script>
+
+{% endblock %}

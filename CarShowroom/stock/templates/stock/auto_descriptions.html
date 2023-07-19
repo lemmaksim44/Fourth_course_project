@@ -1,0 +1,126 @@
+{% extends 'main/sample.html' %}
+
+
+{% block head %} {% include 'main/header.html' %} {% endblock %}
+
+
+{% block content %}
+
+    {% load humanize %}
+
+    <div id="form_question" class="contact_form_box">
+        
+        <div onclick="view_site()" class="contact_form_box_fill"></div>
+
+        <div class="contact_form">
+            <form method="post">
+
+                {% csrf_token %}
+
+                <div class="contact_form_title">Получить консультацию</div>
+                <div class="contact_form_text">Менеджеры компании с радостью ответят на ваши вопросы и произведут расчет стоимости услуг и подготовят индивидуальное коммерческое предложение.<br><br>Поля обязательные к заполнению (*)</div>
+
+                <span style="color: red; font-size: 0.8vw; margin-left: 30%; margin-right: 30%;">{{ error }}</span>
+
+                <div class="contact_form_field">
+
+                    {{ form.name_service }}
+                    
+                    {{ form.client_name }}&nbsp;*<br>
+                    {{ form_client.client_name }}
+                    
+                    {{ form.client_phone }}&nbsp;*<br>
+                    {{ form_client.client_phone }}
+                    
+                    {{ form.client_email }}<br>
+                    {{ form_client.client_email }}
+                    
+                    {{ form.comment }}<br>
+
+                    {{ form.status }}
+
+                    <div class="form_personal_information">Нажимая кнопку отправить я соглашаюсь на <a href="/company/processing_of_personal_data" style="color: #8AB5FC">обработку своих персональных данных</a></div>
+                    <div class="form_button_setting"><button onclick="send()" type="submit" class="form_button">Отправить</button></div>
+                
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    <div class="text">
+        <div class="content_box">
+            <div class="auto_description_box">
+
+                <div class="auto_description_picture">
+                    <img class="auto_description_picture_setting" src="{{ car_in_stock.card_picture.url }}">
+                </div>
+                    
+                <div class="auto_description_title_box">
+
+                    <div class="auto_description_title">
+                        <div id="auto_description_title_id" class="auto_description_text_title">{{ car_in_stock.brand }} {{ car_in_stock.name }} {{ car_in_stock.year }}г.</div>
+                        <div class="models_line"></div>
+
+                        <div class="auto_description_text_TX">
+
+                            <div class="auto_description_text_TX_left">
+                                <div class="auto_description_text_TX_left_setting">Объем двигателя:</div>
+                                <div class="auto_description_text_TX_left_setting">Мощность:</div>
+                                <div class="auto_description_text_TX_left_setting">Тип топлива:</div>
+                                <div class="auto_description_text_TX_left_setting">Коробка передач:</div>
+                                <div class="auto_description_text_TX_left_setting">Привод:</div>
+                                <div class="auto_description_text_TX_left_setting">Тип кузова:</div>
+                                <div class="auto_description_text_TX_left_setting">Цвет:</div>
+                                <div class="auto_description_text_TX_left_setting">Пробег:</div>
+                                <div class="auto_description_text_TX_left_setting">Руль:</div>
+                                <div class="auto_description_text_TX_left_setting">Поколение:</div>
+                                <div class="auto_description_text_TX_left_setting">Комплектация:</div>
+                                <div class="auto_description_text_TX_left_setting">Цена:</div>
+                            </div>
+
+                            <div class="auto_description_text_TX_right">
+                                <div class="auto_description_text_TX_right_setting">{{ car_in_stock.engine_capacity }}</div>
+                                <div class="auto_description_text_TX_right_setting">{{ car_in_stock.power }} л.с.</div>
+                                <div class="auto_description_text_TX_right_setting">{{ car_in_stock.id_fuel_type }}</div>
+                                <div class="auto_description_text_TX_right_setting">{{ car_in_stock.id_transmission }}</div>
+                                <div class="auto_description_text_TX_right_setting">{{ car_in_stock.id_drive_unit }}</div>
+                                <div class="auto_description_text_TX_right_setting">{{ car_in_stock.id_body_type }}</div>
+                                <div class="auto_description_text_TX_right_setting">{{ car_in_stock.color }}</div>
+                                <div class="auto_description_text_TX_right_setting">{{ car_in_stock.mileage }} км.</div>
+
+                                <div class="auto_description_text_TX_right_setting">
+                                    {% if car_in_stock.steering_wheel == True %}
+                                        Правый
+                                    {% else %}
+                                        Левый
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="auto_description_text_TX_right_setting">{{ car_in_stock.generation }}</div>
+                                <div class="auto_description_text_TX_right_setting">{{ car_in_stock.car_equipment }}</div>
+                                <div class="auto_description_text_TX_right_setting">{{ car_in_stock.price|intcomma }} ₽</div>
+                            </div>
+
+                            <div class="auto_description_button">
+                                <div onclick="view_form_question()" class="contact_button">Получить консультацию</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="auto_description_text">
+                {{ car_in_stock.description|linebreaks }}
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../../static/stock/js/auto_descriptions.js"></script>
+
+{% endblock %}

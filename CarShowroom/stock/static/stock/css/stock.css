@@ -1,0 +1,226 @@
+/*
+    Auto_new / Auto_used
+*/
+
+
+.stock_box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2vw;
+}
+
+.filter_box {
+    width: 20%;
+}
+
+
+.filter {
+    width: 100%;
+    border: 0.15vw solid #D9D9D9;
+    border-radius: 1vw;
+    background: rgb(0, 0, 0, 0.5);
+}
+
+
+.filter_title {
+    text-align: center;
+    font-size: 1.2vw;
+    margin-top: 0.8vw;
+}
+
+
+.input_range {
+    width: 100%;
+}
+
+
+.filter_body_type {
+    padding-left: 1.2vw;
+    padding-right: 1vw;
+}
+
+
+.filter_body_type_title {
+    text-align: center;
+    font-size: 1vw;
+    margin-top: 0.5vw;
+}
+
+
+.filter_body_type_links {
+    color: #FFFFFF;
+    font-size: 1vw;
+}
+
+
+.models_line_none {
+    width: 100%;
+    height: 1vw;
+}
+
+
+.car_in_stock_box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 75%;
+    min-height: 30vw;
+    height: 100%;
+}
+
+
+.car_in_stock_unbox {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1.2vw;
+    width: 100%;
+}
+
+
+.card_car_in_stock_link {
+    width: 14.5vw;
+    height: 14vw;
+}
+
+
+.card_car_in_stock {
+    width: 14.5vw;
+    height: 14vw;
+    border: 0.15vw solid #D9D9D9;
+    border-radius: 1vw;
+    color: #FFFFFF;
+}
+
+
+.card_car_in_stock_picture {
+    width: 14.2vw;
+    height: 10vw;
+}
+
+
+.card_car_in_stock_picture_setting {
+    width: 14.2vw;
+    height: 10vw;
+    border-radius: 1vw 1vw 0 0;
+}
+
+
+.card_car_in_stock_text_box {
+    width: 14.2vw;
+    height: 4vw;
+}
+
+
+.car_in_stock_title {
+    width: 14.2vw;
+    height: 2vw;
+    font-size: 0.9vw;
+    padding-top: 0.5vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+
+.car_in_stock_price {
+    width: 14.2;
+    height: 2vw;
+    font-size: 0.9vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+
+.car_in_stock_error {
+    font-size: 1.8vw;
+    text-align: center;
+    width: 100%;
+    height: 45vw;
+    padding-top: 5vw;
+}
+
+
+/*
+    Auto_descriptions
+*/
+
+
+.auto_description_box {
+    display: flex;
+}
+
+
+.auto_description_picture {
+    width: 60%;
+    height: 34vw;
+    margin-top: 2vw;
+}
+
+.auto_description_picture_setting {
+    width: 100%;
+    height: 34vw;
+    border-radius: 2vw;
+}
+
+
+.auto_description_title_box {
+    width: 40%;
+    height: 30vw;
+}
+
+
+.auto_description_title {
+    padding-left: 2vw;
+}
+
+
+.auto_description_text_title {
+    font-size: 1.5vw;
+    text-align: center;
+    margin-top: 2vw;
+}
+
+
+.auto_description_text_TX {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.auto_description_text_TX_left {
+    width: 40%;
+    margin-top: 2vw;
+}
+
+
+.auto_description_text_TX_left_setting {
+    font-size: 1vw;
+    margin-left: 2vw;
+    margin-top: 0.2vw;
+}
+
+
+.auto_description_text_TX_right {
+    width: 60%;
+    margin-top: 2vw;
+}
+
+
+.auto_description_text_TX_right_setting {
+    font-size: 1vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-top: 0.2vw;
+}
+
+
+.auto_description_text {
+    margin-top: 2vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    font-size: 1.2vw;
+}
+
+
+.auto_description_button {
+    width: 100%;
+    margin-top: 1vw;
+}

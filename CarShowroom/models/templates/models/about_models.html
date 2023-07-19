@@ -1,0 +1,118 @@
+{% extends 'main/sample.html' %}
+
+
+{% block head %} {% include 'models/models header.html' %} {% endblock %}
+
+
+{% block content %}
+
+    {% load humanize %}
+
+    <div class="model_car_picture">
+
+        <img class="models_car_picture_main" src="{{ model_picture.picture_1.url }}">
+        
+        <div class="models_car_picture_block">
+            <img class="models_car_picture_left" src="{{ model_picture.picture_2.url }}">
+            <img class="models_car_picture_right" src="{{ model_picture.picture_3.url }}">
+        </div>
+    </div>
+
+    <div class="content_box">
+        
+        <div class="description_car">
+            <div class="description_car_title">Описание</div>
+            <div class="models_line"></div>
+            <div class="description_car_text"><p>{{ model.description|linebreaks }}</p></div>
+        </div>
+        
+        <div class="car_modification">
+            <div class="car_modification_title">Модификации авто</div>
+            <div class="models_line"></div>
+            
+            <div class="car_modification_table">
+
+                <div class="car_modification_table_title">
+                    <div class="car_modification_table_title_setting">Объем двигателя</div>
+                    <div class="car_modification_line"></div>
+                    <div class="car_modification_table_title_setting">Мощность двигателя</div>
+                    <div class="car_modification_line"></div>
+                    <div class="car_modification_table_title_setting">Тип топлива</div>
+                    <div class="car_modification_line"></div>
+                    <div class="car_modification_table_title_setting">Тип трансмиссии</div>
+                    <div class="car_modification_line"></div>
+                    <div class="car_modification_table_title_setting">Тип привода</div>
+                </div>
+
+                <div id="arrow_button_left1" class="car_modification_block_arrow_left"></div>
+
+                <div id="container1" class="car_modification_table_meaning_box">
+
+                    {% for line in modification %}
+                        <div class="car_modification_table_meaning">
+                            <div class="car_modification_table_meaning_setting">{{ line.engine_capacity }}</div>
+                            <div class="car_modification_line"></div>
+                            <div class="car_modification_table_meaning_setting">{{ line.engine_power }} л.с.</div>
+                            <div class="car_modification_line"></div>
+                            <div class="car_modification_table_meaning_setting">{{ line.id_fuel_type }}</div>
+                            <div class="car_modification_line"></div>
+                            <div class="car_modification_table_meaning_setting">{{ line.id_transmission }}</div>
+                            <div class="car_modification_line"></div>
+                            <div class="car_modification_table_meaning_setting">{{ line.id_drive_unit }}</div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+                <div id="arrow_button_right1" class="car_modification_block_arrow_right"></div>
+
+            </div>
+
+        </div>
+
+        <div class="description_car_equipment">
+            <div class="description_car_equipment_title">Комплектации авто</div>
+            <div class="models_line"></div>
+            <div class="description_car_equipment_block">
+
+                <div class="description_car_equipment_block_box">
+
+                    <div id="arrow_button_left2" class="description_car_equipment_block_arrow_left"></div>
+
+                    <div id="container2" class="description_car_equipment_block_name">
+                    
+                        {% for line in car_equipment %}
+                            <div id="{{ line.id_car_equipment }}" onclick="double_select(this.id + '%')" class="car_equipment_block">
+                                <div class="car_equipment_name">{{ line.name }}</div>
+                                <div class="car_equipment_price">{{ line.price|intcomma }} ₽</div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <div id="arrow_button_right2" class="description_car_equipment_block_arrow_right"></div>
+
+                </div>
+
+                <div class="description_car_equipment_block_text">
+                    {% for line in car_equipment_reverse %}
+
+                        <div id="{{ line.id_car_equipment }}%" class="car_equipment_block_text">
+                            <div class="car_equipment_block_text_title">
+                                <div class="car_equipment_block_text_title_setting">{{ line.name }}</div>
+                                <div class="car_equipment_block_text_title_setting">{{ line.price|intcomma }} ₽</div>
+                            </div>
+                            <div class="models_line"></div>
+                            <div class="car_equipment_block_text_discription">{{ line.description|linebreaks }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../../static/models/js/about_models.js"></script>
+
+{% endblock %}
